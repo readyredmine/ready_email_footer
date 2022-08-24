@@ -3,8 +3,9 @@ Ready Email Footer
 
 Ready Email Footer plugin is brought to you by ReadyRedmine (https://readyredmine.com).
 
-The plugin allows configuring a uniform email footer for Redmine users. Using this plugin you may efficiently distribute a unified email footer through your organization.
-Users may download an HTML file (on `My account page`) and use it with desired email client software.
+The plugin allows configuring a uniform email footer for Redmine users. Using this plugin you may efficiently distribute a unified email footer through your organization. Redmine users may download an HTML file (on `My account page`) and use it with desired email client software.
+
+You can learn more about this plugin here: https://readyredmine.com/ready-email-footer-redmine-plugin/
 
 Requirements
 ------------
