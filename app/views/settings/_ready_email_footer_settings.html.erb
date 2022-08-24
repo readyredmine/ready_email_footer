@@ -1,0 +1,83 @@
+<%
+# This file is a part of ready_email_footer Redmine plugin.
+
+# Copyright (c) 2022 ReadyRedmine (https://readyredmine.com)
+
+# ready_email_footer is free software: you can redistribute it 
+# and/or modify it under the terms of the GNU General Public License 
+# as published by the Free Software Foundation, either version 3 
+# of the License, or (at your option) any later version.
+
+# ready_email_footer is distributed in the hope that it will 
+# be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License 
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+%>
+
+<%= stylesheet_link_tag 'ready_footer.css', :plugin => 'ready_email_footer' %>
+<%= javascript_include_tag 'ready_footer.js', :plugin => 'ready_email_footer' %>
+
+<div style="display: block;"><%= l(:label_setting_enable) %>
+  <%= check_box_tag 'settings[ready_footer]', '1', @settings['ready_footer'] %>
+</div>
+
+<div style="display: block;"><%= l(:label_setting_roles) %>:
+<%= l(:label_no_roles_defined) if Role.all.empty? %>
+<% Role.all.each do |role| %>
+    <%= check_box_tag "settings[ready_footer_roles][]", role.id.to_s, 
+      @settings['ready_footer_roles']&.include?(role.id.to_s) %>
+    <%= role.name %>
+<% end %>
+</div>
+
+<div style="display: block;"><%= l(:label_setting_groups) %>:
+<%= l(:label_no_groups_defined) if Group.all.empty? %>
+<% Group.all.each do |group| %>
+    <%= check_box_tag "settings[ready_footer_groups][]", group.id.to_s, 
+      @settings['ready_footer_groups']&.include?(group.id.to_s) %>
+    <%= group.name %>
+<% end %>
+</div>
+
+<div style="display: block; padding-top: 5px;">
+  <h3><%= l(:title_setting_design) %>
+    <% i = 1 %>
+    <% while lookup_context.exists?('_ready_footer_template' << i.to_s, ["ready_footer"]) %>
+      | <a class="load-template" data-template-path="<%= footer_template_path(id: i) %>">
+          <%= l(:label_setting_template) %> <%= i.to_s %>
+        </a>  
+      <% i += 1 %>
+    <% end %>
+  </h3>
+  <textarea id="edit-footer" rows="15" 
+    id="settings[ready_footer_body]"
+    name="settings[ready_footer_body]"><%= @settings['ready_footer_body'] %></textarea>
+</div>
+
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <h3><%= l(:title_setting_preview) %></h3>
+    <iframe id="preview-container" style="background: white;" 
+      data-preview-path="<%= footer_preview_path %>" 
+      width="800" height="250" src="" >
+    </iframe>
+  </div>
+  <div class="splitcontentright">
+    <h3><%= l(:title_setting_placeholders) %></h3>
+    <div class="res-table">
+      <div class="res-tr res-header">
+        <div class="res-td"><%= l(:header1_setting_placeholders) %></div>
+        <div class="res-td"><%= l(:header2_setting_placeholders) %></div>
+      </div>
+      <% ReadyFooter.placeholders.each do |k,v| %>
+        <div class="res-tr">
+          <div class="res-td res-first">{<%= k %>}</div>
+          <div class="res-td res-second"><%= v %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

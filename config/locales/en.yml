@@ -1,0 +1,33 @@
+# This file is a part of ready_email_footer Redmine plugin.
+
+# Copyright (c) 2022 ReadyRedmine (https://readyredmine.com)
+
+# ready_email_footer is free software: you can redistribute it 
+# and/or modify it under the terms of the GNU General Public License 
+# as published by the Free Software Foundation, either version 3 
+# of the License, or (at your option) any later version.
+
+# ready_email_footer is distributed in the hope that it will 
+# be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License 
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+en:
+  label_setting_enable: "Enable footer download"
+  label_setting_roles: "Enable for roles"
+  label_setting_groups: "Enable for groups"
+  label_setting_template: "Load template"
+  title_setting_design: "Define your footer here. You may start with a template"
+  title_setting_preview: "Preview"
+  title_setting_placeholders: "Available placeholders"
+  description_setting_placeholders: "You may use the following placeholders"
+  header1_setting_placeholders: "Placeholder"
+  header2_setting_placeholders: "Values for your account"
+  label_download: "Email footer"
+  value_show: "Show"  
+  value_download: "Download"
+  label_no_groups_defined: "No groups defined"
+  label_no_roles_defined: "No roles defined"
