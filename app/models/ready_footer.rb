@@ -103,12 +103,11 @@ class ReadyFooter < ActiveRecord::Base
       end
 
       def custom
-        ActiveRecord::Base.connection.execute("
-          SELECT custom_fields.name, custom_values.value 
-          FROM custom_fields JOIN custom_values 
-          ON custom_fields.type = 'UserCustomField' 
-          AND custom_fields.id = custom_values.custom_field_id")
-          .map{|custom| {custom["name"] => custom["value"].strip}}.reduce({}, :merge)
+        CustomValue.includes(:custom_field).where(
+          custom_field: {type: 'UserCustomField'},
+          customized_type: 'Principal', 
+          customized_id: user.id) 
+        .map{|custom| {custom.custom_field.name => custom.value.strip}}.reduce({}, :merge)
       end
     end
 end
