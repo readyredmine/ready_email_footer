@@ -10,7 +10,7 @@ You can learn more about this plugin here: https://readyredmine.com/ready-email-
 Requirements
 ------------
 
-- Redmine `= 5.0.0`
+- Redmine `>= 4.1.0`
 
 
 Installation
