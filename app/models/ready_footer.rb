@@ -104,7 +104,7 @@ class ReadyFooter < ActiveRecord::Base
 
       def custom
         CustomValue.includes(:custom_field).where(
-          custom_field: {type: 'UserCustomField'},
+          custom_fields: {type: 'UserCustomField'},
           customized_type: 'Principal', 
           customized_id: user.id) 
         .map{|custom| {custom.custom_field.name => custom.value.strip}}.reduce({}, :merge)
