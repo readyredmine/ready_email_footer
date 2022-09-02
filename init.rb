@@ -27,7 +27,7 @@ Redmine::Plugin.register :ready_email_footer do
   version '0.5.0'
   url 'https://readyredmine.com'
   author_url 'https://readyredmine.com'
-  requires_redmine :version_or_higher => '5.0.0'
+  requires_redmine :version => '4.1.0'..'5.0.2'
   settings :default => {
     'ready_footer' => false,
     'ready_footer_body' => 'Best regards,<br>{first_name} {last_name}',
